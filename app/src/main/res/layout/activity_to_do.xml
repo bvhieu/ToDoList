@@ -24,11 +24,11 @@
 
     <Button
         android:id="@+id/button_add_todo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="57dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="28dp"
-        android:text="New"
+        android:foreground="@android:drawable/ic_menu_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

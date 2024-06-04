@@ -1,10 +1,12 @@
 package com.example.to_dolist;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,9 +48,19 @@ public class AddToDoActivity extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, day);
-                String myFormat = "MM/dd/yyyy";
-                SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.UK);
-                txt_date_of_todo.setText(dateFormat.format(calendar.getTime()));
+
+                // Time picker
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddToDoActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        calendar.set(Calendar.MINUTE, minute);
+                        String myFormat = "MM/dd/yyyy HH:mm";
+                        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.UK);
+                        txt_date_of_todo.setText(dateFormat.format(calendar.getTime()));
+                    }
+                }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+                timePickerDialog.show();
             }
         };
         txt_date_of_todo.setOnClickListener(new View.OnClickListener() {

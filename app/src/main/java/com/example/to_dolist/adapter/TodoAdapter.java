@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.to_dolist.AddToDoActivity;
 import com.example.to_dolist.R;
 import com.example.to_dolist.ToDoActivity;
+import com.example.to_dolist.TodoDetailActivity;
 import com.example.to_dolist.database.ConnectDatabase;
 import com.example.to_dolist.objects.Todo;
 
@@ -55,10 +56,26 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MyViewHolder> 
         holder.txt_date_of_todo.setText(dateFormat.format(currentTodo.getDate_of_todo()));
 
         setTodoDetailOnClickListener(holder.image_todo_update, currentTodo);
-
         removeTodoDetailOnClickListener(holder.image_todo_remove, currentTodo);
+        TodoDetailOnClickListener(holder.todoItemLayout, currentTodo);
+
     }
 
+    private void TodoDetailOnClickListener(View view, Todo todo){
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TodoDetailActivity.class);
+                intent.putExtra("todoId", todo.getTodo_id());
+                intent.putExtra("todoName", todo.getTodo_name());
+                String myFormat = "MM/dd/yyyy";
+                SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.UK);
+                intent.putExtra("dateOfTodo", dateFormat.format(todo.getDate_of_todo()));
+                intent.putExtra("todoDescription", todo.getTodo_description());
+                context.startActivity(intent);
+            }
+        });
+    }
     private void setTodoDetailOnClickListener(ImageView imageView, Todo todo) {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
