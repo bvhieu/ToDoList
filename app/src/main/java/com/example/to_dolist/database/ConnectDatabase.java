@@ -83,16 +83,13 @@ public class ConnectDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor searchTodo(String keyWord) {
-        String query = "SELECT * FROM " + Todo.TABLE_NAME +
-                " WHERE " + Todo.COLUMN_NAME + " LIKE ?" +
-                " OR " + Todo.COLUMN_TODO_DESCRIPTION + " LIKE ?" +
-                " OR " + Todo.COLUMN_TODO_DATE + " LIKE ?";
-
-        String[] selectionArgs = {"%" + keyWord + "%", "%" + keyWord + "%", "%" + keyWord + "%", "%" + keyWord + "%"};
+        String query = "SELECT * FROM " + Todo.TABLE_NAME+ " WHERE "
+                + Todo.COLUMN_NAME + " LIKE '%" + keyWord + "%'"
+                + " OR " + Todo.COLUMN_TODO_DATE + " LIKE '%" + keyWord + "%'";
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = null;
-        if (sqLiteDatabase != null) {
-            cursor = sqLiteDatabase.rawQuery(query, selectionArgs);
+        if (sqLiteDatabase != null){
+            cursor = sqLiteDatabase.rawQuery(query, null);
         }
         return cursor;
     }

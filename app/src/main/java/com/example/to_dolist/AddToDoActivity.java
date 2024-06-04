@@ -31,6 +31,13 @@ public class AddToDoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_todo);
         setTitle("Add new TODO");
 
+        connectDatabase = new ConnectDatabase(this);
+        //set interface variable
+        btn_save_todo = findViewById(R.id.btn_save_todo);
+        txt_todo_name = findViewById(R.id.txt_todo_name);
+        txt_date_of_todo = findViewById(R.id.txt_date_of_todo);
+        txt_todo_description = findViewById(R.id.txt_todo_description);
+
         //date picker
         Calendar calendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -44,24 +51,17 @@ public class AddToDoActivity extends AppCompatActivity {
                 txt_date_of_todo.setText(dateFormat.format(calendar.getTime()));
             }
         };
-
-        //set interface variable
-        txt_todo_name = findViewById(R.id.txt_todo_name);
-        txt_date_of_todo = findViewById(R.id.txt_date_of_todo);
         txt_date_of_todo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DatePickerDialog(AddToDoActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        txt_todo_description = findViewById(R.id.txt_todo_description);
-        btn_save_todo = findViewById(R.id.btn_save_todo);
 
         //Determine function
         if (getIntent().hasExtra("function")) {
             function = getIntent().getStringExtra("function");
         }
-
 
         //if function is update, set data to input field
         if (function.equals("UPDATE") && getIntent().hasExtra("todoId") && getIntent().hasExtra("todoName") && getIntent().hasExtra("dateOfTodo")
@@ -73,7 +73,6 @@ public class AddToDoActivity extends AppCompatActivity {
             txt_todo_description.setText(getIntent().getStringExtra("todoDescription"));
             btn_save_todo.setText("Update");
         }
-
 
         btn_save_todo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,14 +101,18 @@ public class AddToDoActivity extends AppCompatActivity {
                             //Refresh input if success
                             refreshInputForm();
                             Toast.makeText(AddToDoActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                        }
-                    } else { //update function
 
+//                            finish();
+                        }
+                    } else {
+                        //update function
                         long result = connectDatabase.updateTodo(todoId + "", todoName, dateOfTodo, todoDescription);
                         if (result == -1) {
                             Toast.makeText(AddToDoActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(AddToDoActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
+//                            finish();
                         }
                     }
                 }
