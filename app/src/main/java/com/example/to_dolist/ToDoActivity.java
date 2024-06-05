@@ -23,6 +23,7 @@ import com.example.to_dolist.database.ConnectDatabase;
 import com.example.to_dolist.objects.Todo;
 import com.example.to_dolist.util.Memory;
 import com.example.to_dolist.adapter.TodoAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class ToDoActivity extends AppCompatActivity {
-    Button addButton;
+    FloatingActionButton addButton;
     RecyclerView todo_recycle_view;
     TodoAdapter todo_recycle_view_adapter;
     ConnectDatabase connectDatabase;
@@ -43,7 +44,7 @@ public class ToDoActivity extends AppCompatActivity {
         connectDatabase = new ConnectDatabase(this);
         adapterData = new ArrayList<>();
         todo_recycle_view = findViewById(R.id.recycle_view_todo);
-        addButton = findViewById(R.id.button_add_todo);
+        addButton = findViewById(R.id.fab_add_todo);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
