@@ -37,8 +37,8 @@
 
             <TextView
                 android:id="@+id/textview_todo_name"
-                android:layout_width="113dp"
-                android:layout_height="42dp"
+                android:layout_width="296dp"
+                android:layout_height="37dp"
                 android:layout_marginStart="10dp"
                 android:maxWidth="200dp"
                 android:maxLines="1"

@@ -8,9 +8,13 @@
 ##### Thêm, sửa, xóa từng nhiệm vụ hoặc xóa tất cả nhiệm vụ.
 ##### Tìm kiếm, sắp xếp các nhiệm vụ.
 ##### Lưu trữ dữ liệu cục bộ với SQLite.
-### screen
+### Screen To-Do
 ![img_8.png](img_8.png)
+### To-Do Detail
 ![img_7.png](img_7.png)
-![img_5.png](img_5.png)
+### Create New To-Do
 ![img_6.png](img_6.png)
+### Menu and Search
+![img_5.png](img_5.png)
+### Remove
 ![img_9.png](img_9.png)
