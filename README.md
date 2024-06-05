@@ -9,12 +9,12 @@
 ##### Tìm kiếm, sắp xếp các nhiệm vụ.
 ##### Lưu trữ dữ liệu cục bộ với SQLite.
 ### Screen To-Do
-![img_8.png](img_8.png)
+![img_8.png](image/img_8.png)
 ### To-Do Detail
-![img_7.png](img_7.png)
+![img_7.png](image/img_7.png)
 ### Create New To-Do
-![img_6.png](img_6.png)
+![img_6.png](image/img_6.png)
 ### Menu and Search
-![img_5.png](img_5.png)
+![img_5.png](image/img_5.png)
 ### Remove
-![img_9.png](img_9.png)
+![img_9.png](image/img_9.png)
